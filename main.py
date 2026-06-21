@@ -9,22 +9,27 @@ import VRM
 import os
 
 def main() -> int:
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("WELCOME TO SHITBENCH")
-    print("Copyright (C)2026 Zhuo Jiayan")
-    print("This program licensed under Mozilla Public License version 2.0")
-    mode = inquirer.select(
-        message="Please choose a mode",
-        choices=[
-            Choice(value=1, name="1. Benchmark")
-        ],
-    ).execute()
-    if mode == 1:
-        print("we'll test:")
-        print("1. CPU")
-        print("2. RAM")
-        print("3. VRM")
-        print("""
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("WELCOME TO SHITBENCH")
+        print("Copyright (C)2026 Zhuo Jiayan")
+        print("This program licensed under Mozilla Public License version 2.0")
+        mode = inquirer.select(
+            message="Please choose a mode",
+            choices=[
+                Choice(value=0, name="Exit"),
+                Choice(value=1, name="1. Benchmark")
+            ],
+        ).execute()
+        if mode == 0:
+            if inquirer.confirm(message="Do you want to exit?").execute():
+                break
+        if mode == 1:
+            print("we'll test:")
+            print("1. CPU")
+            print("2. RAM")
+            print("3. VRM")
+            print("""
 ************************************************************************
 *                                                                      *
 *  6. Disclaimer of Warranty                                           *
@@ -67,11 +72,12 @@ def main() -> int:
 *                                                                      *
 ************************************************************************
 """)
-        if inquirer.confirm(message="Can you accept the Disclaimer of Warranty and Limitation of Liability?").execute():
-            print("Running the shit code, please wait")
-            print(f"Your CPU's score is {CPU.CPU()}/10000")
-            print(f"Your RAM's score is {RAM.RAM()}/10000")
-            print(f"Your VRM's score is {VRM.VRM()}/10000")
+            if inquirer.confirm(message="Can you accept the Disclaimer of Warranty and Limitation of Liability?").execute():
+                print("Running the shit code, please wait")
+                print(f"Your CPU's score is {CPU.CPU()}/10000")
+                print(f"Your RAM's score is {RAM.RAM()}/10000")
+                print(f"Your VRM's score is {VRM.VRM()}/10000")
+                input("Press enter to exit")
     return 0
 if __name__ == "__main__":
     main()
