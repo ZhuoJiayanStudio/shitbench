@@ -11,7 +11,16 @@ import os
 def main() -> int:
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("WELCOME TO SHITBENCH")
+        print("""
+      _     _ _   _                     _     
+     | |   (_) | | |                   | |    
+  ___| |__  _| |_| |__   ___ _ __   ___| |__  
+ / __| '_ \| | __| '_ \ / _ \ '_ \ / __| '_ \ 
+ \__ \ | | | | |_| |_) |  __/ | | | (__| | | |
+ |___/_| |_|_|\__|_.__/ \___|_| |_|\___|_| |_|
+                                              
+                                              
+""")
         print("Copyright (C)2026 Zhuo Jiayan")
         print("This program licensed under Mozilla Public License version 2.0")
         mode = inquirer.select(
